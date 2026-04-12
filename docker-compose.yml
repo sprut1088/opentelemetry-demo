@@ -848,6 +848,8 @@ services:
     restart: unless-stopped
     environment:
       - "GF_INSTALL_PLUGINS=grafana-opensearch-datasource"
+      - "GF_SERVER_ROOT_URL=%(protocol)s://%(domain)s:%(http_port)s/grafana/"
+      - "GF_SERVER_SERVE_FROM_SUB_PATH=true"
     volumes:
       - ./src/grafana/grafana.ini:/etc/grafana/grafana.ini
       - ./src/grafana/provisioning/:/etc/grafana/provisioning/
